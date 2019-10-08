@@ -1,0 +1,11 @@
+#!/bin/bash
+docker build -t sonar_script .
+docker run -ti -d -p 9000:9000 -p 3306:3306 --name=sonar_scr sonar_script
+docker logs -f sonar_scr
+
+
+
+
+
+
+
