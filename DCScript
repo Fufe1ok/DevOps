@@ -1,7 +1,17 @@
 #!/bin/bash
-docker build -t sonar_script .
-docker run -ti -d -p 9000:9000 -p 3306:3306 --name=sonar_scr sonar_script
-docker logs -f sonar_scr
+docker container stop $(docker container ls -aq)
+echo -e "Hi, how do you name your image?"
+echo -e "Please type: "
+read name
+docker build -t $name .
+echo -e "And how do you wanna name you container? Type please: "
+read cont_name
+docker run -ti -d -p 9000:9000 -p 3306:3306 --name=$cont_name $name
+docker logs -f $cont_name
+
+
+
+
 
 
 
