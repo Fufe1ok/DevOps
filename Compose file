@@ -1,0 +1,34 @@
+version: '3'
+services:
+    db:
+      image: postgres
+      container_name: 'database'
+      environment:
+        - POSTGRES_USER=sonar
+        - POSTGRES_PASSWORD=EzioAuditore
+      volumes:
+	- postgresql:/var/lib/postgresql
+        - postgresql_data:/var/lib/postgresql/data
+      networks:
+        - network-test
+
+
+
+    sonarqube:
+     build: .
+     container_name: 'sonarqube'
+     ports:
+       - "9000:9000"
+       - "3306:3306"
+     networks:
+       - network-test
+
+networks:
+    network-test:
+      driver: bridge
+
+
+volumes:
+    postgresql:
+    postgresql_data:
+
