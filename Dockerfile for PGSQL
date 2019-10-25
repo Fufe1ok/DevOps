@@ -1,0 +1,11 @@
+FROM centos:centos7
+
+RUN yum install -y wget \
+ && yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm \
+ && yum install -y postgresql96 \
+ && yum install -y postgresql96-server \
+ && su - postgres -c '/usr/pgsql-9.6/bin/pg_ctl initdb' \
+ && echo "host    all             all             0.0.0.0/0               md5" >> /var/lib/pgsql/9.6/data/pg_hba.conf \
+ && sed "s/#listen_addresses = 'localhost'/listen_addresses = '*'/" -i /var/lib/pgsql/9.6/data/postgresql.conf
+CMD su - postgres -c '/usr/pgsql-9.6/bin/pg_ctl start';  sleep 3 ; su - postgres -c 'createuser sonar'; psql -U postgres -c "ALTER USER sonar WITH ENCRYPTED password 'EzioAuditore';"; psql -U postgres -c  "CREA$
+
