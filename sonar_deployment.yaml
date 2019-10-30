@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonar-deployment
+  labels:
+    app: sonarqube
+spec:
+  selector:
+    matchLabels:
+      app: sonarqube
+  template:
+    metadata:
+      labels:
+	app: sonarqube
+    spec:
+      containers:
+      - name: sonarqube
+        image: fufelok/sonar
+        ports:
+	- containerPort: 9000
+          protocol: TCP
+        resources:
+          limits:
+            memory: "2Gi"
+          requests:
+            memory: "2Gi"
+
