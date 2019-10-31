@@ -1,0 +1,33 @@
+<h2>Car Details</h2> 
+
+<hr/>
+<div *ngIf="car">
+  <div>
+    <label><b>Name: </b></label> {{car.carName}}
+  </div>
+  <div>
+    <label><b>Type: </b></label> {{car.carType}}
+  </div>
+  <div>
+    <label><b>Registration Number: </b></label> {{car.carRegistrationNumber}}
+  </div> 
+  <div>
+    <label><b>Colour: </b></label> {{car.carColour}}
+  </div> 
+  <div>
+    <label><b>User: </b></label> <div *ngIf="car.carUser">{{car.carUser.firstName}}  {{car.carUser.lastName}} </div>
+  </div> 
+  <div>
+    <label><b>Location: </b></label> <div *ngIf="car.carLocation">{{car.carLocation.name}}</div>
+  </div>  
+  <div>
+    <label><b>Manufactoring Date: </b></label> {{car.createdAt}}
+  </div> 
+  <div>
+    <label><b>Last Rental Date: </b></label> {{car.updatedAt}}
+  </div> 
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to Cars List</button><br>

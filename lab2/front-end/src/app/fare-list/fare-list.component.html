@@ -1,0 +1,42 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Fares List</h2>
+    </div>
+
+    <div>
+      <form class="form-inline md-form mr-auto mb-4">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchText" name="searchText" required (input)="search()" (keydown.space)="$event.preventDefault();">
+      </form>
+      <label *ngIf="foundFares"><b>Found: </b></label>
+      <ul *ngFor="let fare of foundFares">
+        <li>{{fare.fareUuid}} <button (click)="deleteFare(fare.fareId)" class="btn btn-danger">Delete</button>
+          <button (click)="fareDetails(fare.fareId)" class="btn btn-info" style="margin-left: 10px">Details</button>
+          <button (click)="updateFare(fare.fareId)" class="btn btn-info" style="margin-left: 10px">Update</button>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>UUID</th>
+            <th>Status</th>
+            <th>User</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let fare of fares | async">
+            <td>{{fare.fareUuid}}</td>
+            <td>{{fare.fareStatus}}</td>
+            <td><div *ngIf="fare.fareUser">{{fare.fareUser.firstName}} {{fare.fareUser.lastName}}</div></td>
+            <td><button (click)="deleteFare(fare.fareId)" class="btn btn-danger">Delete</button>
+                <button (click)="fareDetails(fare.fareId)" class="btn btn-info" style="margin-left: 10px">Details</button>
+                <button (click)="updateFare(fare.fareId)" class="btn btn-info" style="margin-left: 10px">Update</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

@@ -1,0 +1,44 @@
+<h2>User Details</h2> 
+
+<hr/>
+<div *ngIf="user">
+  <div>
+    <label><b>First Name: </b></label> {{user.userFirstName}}
+  </div>
+  <div>
+    <label><b>Last Name: </b></label> {{user.userLastName}}
+  </div>
+  <div>
+    <label><b>Email: </b></label> {{user.userEmail}}
+  </div>  
+  <div>
+      <label><b>Role: </b></label> <div *ngIf="user.userRole">{{user.userRole.roleName}}</div>
+    </div> 
+  <div>
+      <label><b>Cars: </b></label>           
+        <td>
+          <li *ngFor="let car of user.userCars">
+            <span class="badge">{{car.id}}</span> {{car.name}}  {{car.type}}  {{car.colour}}  {{car.registrationNumber}}
+          </li>
+        </td>
+  </div> 
+  <div>
+    <label><b>Fares: </b></label>              
+        <td>
+        <li *ngFor="let fare of user.userFares">
+            <span class="badge">{{fare.id}}</span> {{fare.uuid}}  {{fare.status}}
+        </li>
+        </td>
+  </div>
+  <div>
+    <label><b>Created At: </b></label> {{user.createdAt}}
+  </div> 
+  <div>
+    <label><b>Updated At: </b></label> {{user.updatedAt}}
+  </div>  
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to users list</button><br>
+

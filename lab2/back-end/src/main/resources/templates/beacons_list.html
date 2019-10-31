@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="uk">
+<head>
+    <meta charset="utf-8"/>
+    <title>Beacons List</title>
+</head>
+<body>
+<h2>Beacons List</h2>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>UUID</th>
+        <th>Status</th>
+        <th>Room Name</th>
+        <th>Created At</th>
+        <th>Updated At</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="fare : ${fares}">
+        <td th:text="${fare.getId()}">ID</td>
+        <td th:text="${fare.getUuid()}">UUID</td>
+        <td th:text="${fare.getStatus()}">Status</td>
+        <td th:text="${fare.getRoom().getName()}">Room Name</td>
+        <td th:text="${fare.getCreatedAt()}">Created At</td>
+        <td th:text="${fare.getUpdatedAt()}">Updated At</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

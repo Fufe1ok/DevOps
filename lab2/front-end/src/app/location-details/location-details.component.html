@@ -1,0 +1,23 @@
+<h2>Location Details</h2> 
+
+<hr/>
+<div *ngIf="location">
+  <div>
+    <label><b>Name: </b></label> {{location.locationName}}
+  </div>
+  <div>
+    <label><b>Description: </b></label> {{location.locationDescription}}
+  </div>
+  <div>
+    <label><b>Cars: </b></label>             
+        <td>
+        <li *ngFor="let car of location.locationCars">
+            <span class="badge">{{car.id}}</span> {{car.name}}  {{car.type}}  {{car.colour}}  {{car.registrationNumber}}
+        </li>
+        </td>
+  </div>
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to Location List</button><br>

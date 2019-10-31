@@ -1,0 +1,46 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Locations List</h2>
+    </div>
+
+    <div>
+      <form class="form-inline md-form mr-auto mb-4">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchText" name="searchText" required (input)="search()" (keydown.space)="$event.preventDefault();">
+      </form>
+      <label *ngIf="foundLocations"><b>Found: </b></label>
+      <ul *ngFor="let location of foundLocations">
+        <li>{{location.locationName}} <button (click)="deleteLocation(location.locationId)" class="btn btn-danger">Delete</button>
+          <button (click)="locationDetails(location.locationId)" class="btn btn-info" style="margin-left: 10px">Details</button>
+          <button (click)="updateLocation(location.locationId)" class="btn btn-info" style="margin-left: 10px">Update</button>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Cars</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let location of locations | async">
+            <td>{{location.locationName}}</td>
+            <td>{{location.locationDescription}}</td>
+            <td>
+                <li *ngFor="let car of location.locationCars">
+                    <span class="badge">{{car.id}}</span> {{car.name}}  {{car.type}}  {{car.colour}}  {{car.registrationNumber}}
+                </li>
+              </td>
+            <td><button (click)="deleteLocation(location.locationId)" class="btn btn-danger">Delete</button>
+                <button (click)="locationDetails(location.locationId)" class="btn btn-info" style="margin-left: 10px">Details</button>
+                <button (click)="updateLocation(location.locationId)" class="btn btn-info" style="margin-left: 10px">Update</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

@@ -1,0 +1,80 @@
+<h2>User Details Update</h2> 
+
+<hr/>
+<div *ngIf="user">
+        <div [hidden]="submitted" style="width: 400px;">
+            <div>
+                <label><b>First Name: </b></label> {{user.userFirstName}}
+              </div>
+              <div>
+                <label><b>Last Name: </b></label> {{user.userLastName}}
+              </div>
+              <div>
+                <label><b>Email: </b></label> {{user.userEmail}}
+              </div>  
+              <div>
+                <label><b>Role: </b></label> <div *ngIf="user.userRole">{{user.userRole.name}}</div>
+              </div> 
+              <div>
+                <label><b>Cars: </b></label>           
+                  <td>
+                    <li *ngFor="let car of carsOfUser | async">
+                      <span class="badge">{{car.carId}}</span> {{car.carName}}  {{car.carType}}  {{car.carColour}}  {{car.carImei}}
+                      <button (click)="dissociateCar(car.carId)" class="btn btn-danger">Dissociate</button>
+                    </li>
+                  </td>
+              </div> 
+              <div>
+                <label><b>Fares: </b></label>              
+                    <td>
+                    <li *ngFor="let fare of userFares | async">
+                        <span class="badge">{{fare.fareId}}</span> {{fare.fareUuid}}  {{fare.fareStatus}}
+                        <button (click)="dissociateFare(fare.fareId)" class="btn btn-danger">Dissociate</button>
+                    </li>
+                    </td>
+              </div>
+            <br>
+            <div>
+                    <label><b>Update Form: </b></label> 
+            </div>
+            <form ngNativeValidate (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="name">ID</label>
+                <input type="text" value="{{user.userId}}" [(ngModel)]="updatedUser.id" readonly disabled class="form-control" name="id"/>
+                <label for="name">First Name</label>
+                <input type="text" value="{{user.userFirstName}}" class="form-control" id="firstName" required [(ngModel)]="updatedUser.firstName" name="firstName">
+                <label for="name">Last Name</label>
+                <input type="text" value="{{user.userLastName}}" class="form-control" id="lastName" required [(ngModel)]="updatedUser.lastName" name="lastName">
+                <label for="name">Email</label>
+                <input type="email" value="{{user.userEmail}}" class="form-control" id="email" required [(ngModel)]="updatedUser.email" name="email">
+
+              </div>
+              <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+
+            <form ngNativeValidate (ngSubmit)="onSubmitAssign()">
+              <div class="form-group">
+                <label for="role">Role</label>
+                <br>
+                <select [(ngModel)]="selectedLevel" name="selectedLevel" id="selectedLevel" required>
+                  <option *ngFor="let role of roles | async" value="{{role.roleId}}">
+                    <span class="badge">{{role.roleName}}</span>
+                  </option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-success">Change Role</button>
+            </form>
+
+          </div>
+</div>
+
+
+
+<div [hidden]="!submitted">
+    <h4>You submitted successfully!</h4>
+    <!-- <button class="btn btn-success" (click)="newUser()">Add</button> -->
+  </div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to User List</button><br>
