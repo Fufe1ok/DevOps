@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class RoleService {
 
-  private baseUrl = 'https://lab2-256619.appspot.com/roles';
+  private baseUrl = 'https://lab2-backend.appspot.com/roles';
 
   constructor(private http: HttpClient) { }
 
