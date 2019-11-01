@@ -18,7 +18,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@CrossOrigin(origins = "https://lab2front-256619.appspot.com")
+@CrossOrigin(origins = "https://lab2-frontend.appspot.com")
 @RestController
 public class UserController {
 
