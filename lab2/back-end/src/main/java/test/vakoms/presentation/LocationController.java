@@ -18,7 +18,7 @@ import java.util.Set;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
-@CrossOrigin(origins = "https://lab2front-256619.appspot.com")
+@CrossOrigin(origins = "https://lab2-frontend.appspot.com")
 @RestController
 public class LocationController {
 
