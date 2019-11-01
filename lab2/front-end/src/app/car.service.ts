@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class CarService {
 
-  private baseUrl = 'https://lab2-256619.appspot.com';
+  private baseUrl = 'https://lab2-backend.appspot.com';
 
   constructor(private http: HttpClient) { }
 
