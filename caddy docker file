@@ -1,0 +1,29 @@
+FROM centos:centos7
+RUN curl https://getcaddy.com | bash -s personal \
+&& yum install -y wget \
+&& setcap 'cap_net_bind_service=+ep' /usr/local/bin/caddy \
+&& useradd -r -d /var/www -M -s /sbin/nologin caddy \
+&& mkdir -p /var/www/example.com \
+&& chown -R caddy:caddy /var/www \
+&& mkdir /etc/ssl/caddy \
+&& chown -R caddy:root /etc/ssl/caddy \
+&& chmod 0770 /etc/ssl/caddy \
+&& mkdir /etc/caddy \
+&& chown -R root:caddy /etc/caddy \
+&& touch /etc/caddy/Caddyfile \
+&& chown caddy:caddy /etc/caddy/Caddyfile \
+&& chmod 444 /etc/caddy/Caddyfile \
+&& wget https://raw.githubusercontent.com/Fufe1ok/DevOps/master/Caddyfile \
+&& mv Caddyfile /etc/caddy/Caddyfile \
+&& wget https://raw.githubusercontent.com/Fufe1ok/DevOps/master/caddy.service \
+&& mv caddy.service /etc/systemd/system/caddy.service \
+&& wget https://raw.githubusercontent.com/Fufe1ok/DevOps/master/index.html \
+&& mv index.html /var/www/example.com/index.html
+WORKDIR /var/www/example.com/
+CMD caddy
+
+
+
+
+
+
