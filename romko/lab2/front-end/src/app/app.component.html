@@ -1,0 +1,55 @@
+<body>
+    <div class="content">
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+        <a routerLink="users" class="nav-link" routerLinkActive="active">Users List</a>
+    </li>
+    <li class="nav-item">
+        <a routerLink="addUser" class="nav-link" routerLinkActive="active">Add User</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="locations" class="nav-link" routerLinkActive="active">Locations List</a>
+    </li>
+    <li class="nav-item">
+        <a routerLink="addLocation" class="nav-link" routerLinkActive="active">Add Location</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="cars" class="nav-link" routerLinkActive="active">Cars List</a>
+    </li>
+    <li class="nav-item">
+        <a routerLink="addCar" class="nav-link" routerLinkActive="active">Add Car</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="fares" class="nav-link" routerLinkActive="active">Fares List</a>
+    </li>
+    <li class="nav-item">
+        <a routerLink="addFare" class="nav-link" routerLinkActive="active">Add Fare</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="roles" class="nav-link" routerLinkActive="active">Roles List</a>
+    </li>
+    <li class="nav-item">
+        <a routerLink="addRole" class="nav-link" routerLinkActive="active">Create Role</a>
+    </li>
+  </ul>
+</nav>
+<div class="container">
+  <br>
+  <h2 style="text-align: center;">{{title}}</h2>
+  <hr>  
+  <div class="card">
+    <div class="card-body">
+  <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+      <span>All Rights Reserved 2019 @Maxon</span>
+  </div>
+</footer>
+</div>
+</body>

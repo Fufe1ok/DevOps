@@ -1,0 +1,84 @@
+<h2>Car Details Update</h2> 
+
+<hr/>
+<div *ngIf="car">
+        <div [hidden]="submitted" style="width: 400px;">
+            <div>
+                <label><b>Name: </b></label> {{car.carName}}
+              </div>
+              <div>
+                <label><b>Type: </b></label> {{car.carType}}
+              </div>
+              <div>
+                <label><b>Registration Number: </b></label> {{car.carRegistrationNumber}}
+              </div> 
+              <div>
+                <label><b>Colour: </b></label> {{car.carColour}}
+              </div> 
+              <div *ngIf="car.carUser">
+                <label><b>User: </b></label> <div >{{car.carUser.firstName}}  {{car.carUser.lastName}} </div>
+                <button (click)="dissociateUser()" class="btn btn-danger">Dissociate</button>
+              </div> 
+              <div *ngIf="car.carLocation">
+                <label><b>Location: </b></label> <div >{{car.carLocation.name}}</div>
+                <button (click)="dissociateLocation()" class="btn btn-danger">Dissociate</button>
+              </div> 
+            <br>
+            <div>
+                    <label><b>Update Form: </b></label> 
+            </div>
+            <form ngNativeValidate (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="id">ID</label>
+                <input type="text" value="{{car.carId}}" [(ngModel)]="updatedCar.id" readonly disabled class="form-control" name="id"/>
+                <label for="name">Name</label>
+                <input type="text" value="{{car.carName}}" class="form-control" id="name" required [(ngModel)]="updatedCar.name" name="name">
+                <label for="type">Type</label>
+                <input type="text" value="{{car.carType}}" class="form-control" id="type" required [(ngModel)]="updatedCar.type" name="type">
+                <label for="registrationNumber">Registration Number</label>
+                <input type="text" value="{{car.carRegistrationNumber}}" class="form-control" id="registrationNumber" required [(ngModel)]="updatedCar.registrationNumber" name="registrationNumber">
+                <label for="colour">Colour</label>
+                <input type="text" value="{{car.carColour}}" class="form-control" id="colour" required [(ngModel)]="updatedCar.colour" name="colour">
+              </div>
+              <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+
+            <form ngNativeValidate (ngSubmit)="onSubmitAssign()">
+              <div class="form-group">
+                <label for="user">User</label>
+                <br>
+                <select [(ngModel)]="selectedLevel" name="selectedLevel" id="selectedLevel" required>
+                  <option *ngFor="let user of users | async" value="{{user.userId}}">
+                    <span class="badge">{{user.userFirstName}} {{user.userLastName}}</span>
+                  </option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-success">Change User</button>
+            </form>
+
+            <form ngNativeValidate (ngSubmit)="onSubmitAssign()">
+              <div class="form-group">
+                <label for="location">Location</label>
+                <br>
+                <select [(ngModel)]="selectedLevel1" name="selectedLevel1" id="selectedLevel1" required>
+                  <option *ngFor="let location of locations | async" value="{{location.locationId}}">
+                    <span class="badge">{{location.locationName}}</span>
+                  </option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-success">Change Location</button>
+            </form>
+
+          </div>
+</div>
+
+
+
+<div [hidden]="!submitted">
+    <h4>You submitted successfully!</h4>
+    <!-- <button class="btn btn-success" (click)="newCar()">Add</button> -->
+  </div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to Car List</button><br>

@@ -1,0 +1,24 @@
+<h2>Fare Details</h2> 
+
+<hr/>
+<div *ngIf="fare">
+  <div>
+    <label><b>UUID: </b></label> {{fare.fareUuid}}
+  </div>
+  <div>
+    <label><b>Status: </b></label> {{fare.fareStatus}}
+  </div>
+  <div>
+      <label><b>User: </b></label> <div *ngIf="fare.fareUser">{{fare.fareUser.firstName}} {{fare.fareUser.lastName}}</div>
+  </div>
+  <div>
+    <label><b>Created At: </b></label> {{fare.createdAt}}
+  </div> 
+  <div>
+    <label><b>Updated At: </b></label> {{fare.updatedAt}}
+  </div> 
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to Fares List</button><br>

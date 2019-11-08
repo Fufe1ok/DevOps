@@ -1,0 +1,20 @@
+<h2>Role Details</h2> 
+
+<hr/>
+<div *ngIf="role">
+  <div>
+    <label><b>Name: </b></label> {{role.roleName}}
+  </div>
+  <div>
+    <label><b>Users: </b></label>             
+    <td>
+    <li *ngFor="let user of role.users">
+        <span class="badge">{{user.id}}</span> {{user.firstName}}  {{user.lastName}}
+    </li>
+    </td>
+  </div>
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to Role List</button><br>

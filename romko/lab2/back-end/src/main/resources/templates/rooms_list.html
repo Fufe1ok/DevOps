@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="uk">
+<head>
+    <meta charset="utf-8"/>
+    <title>Rooms List</title>
+</head>
+<body>
+<h2>Rooms List</h2>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Room Name</th>
+        <th>Description</th>
+        <th>Devices</th>
+        <th>Beacons</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="location : ${locations}">
+        <td th:text="${location.getId()}">ID</td>
+        <td th:text="${location.getName()}">Room Name</td>
+        <td th:text="${location.getDescription()}">Description</td>
+        <td th:text="${location.getDevicesDetails()}">Devices</td>
+        <td th:text="${location.getBeaconsDetails()}">Beacons</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

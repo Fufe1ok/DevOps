@@ -1,0 +1,48 @@
+<h2>Locations Details Update</h2> 
+
+<hr/>
+<div *ngIf="location">
+        <div [hidden]="submitted" style="width: 400px;">
+            <div>
+                <label><b>Name: </b></label> {{location.locationName}}
+              </div>
+              <div>
+                <label><b>Description: </b></label> {{location.locationDescription}}
+              </div>
+              <div>
+                <label><b>Cars: </b></label>              
+                    <td>
+                    <li *ngFor="let car of locationCars | async">
+                      <span class="badge">{{car.carId}}</span> {{car.carName}}  {{car.carType}}  {{car.carColour}}  {{car.carImei}}
+                        <button (click)="dissociateCar(car.carId)" class="btn btn-danger">Dissociate</button>
+                    </li>
+                    </td>
+              </div>
+            <br>
+            <div>
+                    <label><b>Update Form: </b></label> 
+            </div>
+            <form ngNativeValidate (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="id">ID</label>
+                <input type="text" value="{{location.locationId}}" [(ngModel)]="updatedLocation.id" readonly disabled class="form-control" name="id"/>
+                <label for="name">Name</label>
+                <input type="text" value="{{location.locationName}}" class="form-control" id="name" required [(ngModel)]="updatedLocation.name" name="name">
+                <label for="description">Description</label>
+                <input type="text" value="{{location.locationDescription}}" class="form-control" id="description" required [(ngModel)]="updatedLocation.description" name="description">
+              </div>
+              <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+          </div>
+</div>
+
+
+
+<div [hidden]="!submitted">
+    <h4>You submitted successfully!</h4>
+    <!-- <button class="btn btn-success" (click)="newLocation()">Add</button> -->
+  </div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to Locations List</button><br>

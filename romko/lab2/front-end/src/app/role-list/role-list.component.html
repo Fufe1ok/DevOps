@@ -1,0 +1,30 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Role List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Users</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let role of roles | async">
+            <td>{{role.roleName}}</td>
+            <td>
+              <li *ngFor="let user of role.users">
+                  <span class="badge">{{user.id}}</span> {{user.firstName}}  {{user.lastName}}
+              </li>
+            </td>
+            <td><button (click)="deleteRole(role.roleId)" class="btn btn-danger">Delete</button>
+                <button (click)="roleDetails(role.roleId)" class="btn btn-info" style="margin-left: 10px">Details</button>
+                <button (click)="updateRole(role.roleId)" class="btn btn-info" style="margin-left: 10px">Update</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

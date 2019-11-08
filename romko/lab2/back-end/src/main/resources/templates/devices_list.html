@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="uk">
+<head>
+    <meta charset="utf-8"/>
+    <title>Devices List</title>
+</head>
+<body>
+<h2>Devices List</h2>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>IMEI</th>
+        <th>Colour</th>
+        <th>User</th>
+        <th>Room Name</th>
+        <th>Created At</th>
+        <th>Updated At</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="car: ${cars}">
+        <td th:text="${car.getId()}">ID</td>
+        <td th:text="${car.getName()}">Name</td>
+        <td th:text="${car.getType()}">Type</td>
+        <td th:text="${car.getImei()}">IMEI</td>
+        <td th:text="${car.getColour()}">Colour</td>
+        <td th:text="${car.getUser().getFirstName() + ' ' + car.getUser().getLastName()}">User</td>
+        <td th:text="${car.getRoom().getName()}">Room Name</td>
+        <td th:text="${car.getCreatedAt()}">Created At</td>
+        <td th:text="${car.getUpdatedAt()}">Updated At</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
