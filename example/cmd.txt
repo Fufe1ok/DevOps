@@ -1,0 +1,17 @@
+python cloudiot_pubsub_example_server.py --project_id=lab3-259417 --pubsub_subscription=gcf-function-1-lab3 --service_account_json=service_account.json
+
+python sensor-1.py --project_id=lab3-259417 --registry_id=lab3 --device_id=device1 --private_key_file=rsa_private1.pem --algorithm=RS256 --cloud_region=europe-west1
+
+python sensor-2.py --project_id=lab3-259417 --registry_id=lab3 --device_id=device2 --private_key_file=rsa_private2.pem --algorithm=RS256 --cloud_region=europe-west1
+
+python sensor-3.py --project_id=lab3-259417 --registry_id=lab3 --device_id=device3 --private_key_file=rsa_private3.pem --algorithm=RS256 --cloud_region=europe-west1
+
+gcloud iot registries describe lab3 --project=lab3-259417 --region=europe-west1
+
+gcloud iot devices describe device1 --project=lab3-259417 --region=europe-west1 --registry=lab3
+
+openssl req -x509 -newkey rsa:2048 -keyout rsa_private1.pem -nodes -out rsa_cert1.pem -subj "/CN=unused"
+
+$env:OPENSSL_CONF = "C:\OpenSSL\openssl.cnf"
+
+.\env\Scripts\activate

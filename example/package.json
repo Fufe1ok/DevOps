@@ -1,0 +1,12 @@
+{
+  "name": "sample-http",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {},
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "firebase-admin": "^8.7.0"
+  }
+}
