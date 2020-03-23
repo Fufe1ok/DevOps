@@ -1,0 +1,19 @@
+# escape=`
+FROM mcr.microsoft.com/windows/servercore/iis
+#ARG src="Microsoft Visual Studio"
+#ARG dest="C:/"
+#COPY ${src} ${dest}
+#COPY . C:/inetpub/wwwroot
+#COPY tools C:/
+COPY ps.ps1 C:/
+#RUN powershell mv C:\API\tools C:\ `
+#powershell mv "C:\API\Microsoft Visual Studio" "C:\Program Files (x86)" `
+#New-Website -Name 'Agency' -Port 80 -PhysicalPath 'c:\API\DeployOutput' -ApplicationPool 'Agency360_ad_empeek'
+RUN powershell C:/ps.ps1 
+#choco install nodejs --version=10.16.3 -y docker 
+#choco install urlrewrite -y `
+#powershell -Command Install-WindowsFeature NET-Framework-45-ASPNET `
+#powershell -Command Install-WindowsFeature Web-Asp-Net45
+EXPOSE 80
+ENTRYPOINT ["C:\\ServiceMonitor.exe", "w3svc"]
+
