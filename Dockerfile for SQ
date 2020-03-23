@@ -10,7 +10,7 @@ RUN yum -y install epel-release wget unzip java-11-openjdk-devel nano \
  && useradd -c "Sonar System User" -d /opt/sonarqube -g sonar -s /bin/bash sonar \
  && chown -R sonar:sonar /opt/sonarqube \
  && sed 's/#RUN_AS_USER=/RUN_AS_USER=sonar/' -i /opt/sonarqube/bin/linux-x86-64/sonar.sh \
- && sed 's/#sonar.jdbc.password=/sonar.jdbc.password=EzioAuditore/' -i /opt/sonarqube/conf/sonar.properties \
+ && sed 's/#sonar.jdbc.password=/sonar.jdbc.password=/' -i /opt/sonarqube/conf/sonar.properties \
  && sed 's/#sonar.jdbc.username=/sonar.jdbc.username=sonar/' -i /opt/sonarqube/conf/sonar.properties \
  && sed 's|#sonar.jdbc.url=jdbc:postgresql://localhost/sonarqube?currentSchema=my_schema|sonar.jdbc.url=jdbc:postgresql://database/sonar|' -i /opt/sonarqube/conf/sonar.properties \
  && wget --user=admin --password=g6JZ7AMX http://10.26.34.133:8081/repository/fileRepo/sonar.properties \
